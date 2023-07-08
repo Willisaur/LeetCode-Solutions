@@ -11,9 +11,8 @@ class Solution:
         while head != None:
             if head in addrs:
                 return True
-            else:
-                addrs.append(head)
-            
+
+            addrs.append(head)            
             head = head.next
         
         return False
