@@ -2,25 +2,20 @@ class Solution {
 public:
     int hIndex(vector<int>& citations) {
         // sort the citations
-        // compare each element to the count of remaining elements; store the lesser value
-        // return the max of that list
+        // store the lesser value: each element or the count of remaining elements
+        // compare each value to a running max
 
         sort(citations.begin(), citations.end());
         vector<int> rem;
         int val;
+        int max = 0;
 
         for (int i = 0; i < citations.size(); ++i){
             val = (citations[i] < citations.size()-i) ? citations[i] : citations.size()-i;
-            rem.push_back(val);
+            if (val > max)
+                max = val;
         }
         
-        val = 0;
-
-        for (int n: rem){
-            if (n > val)
-                val = n;
-        }
-
-        return val;
+        return max;
     }
 };
