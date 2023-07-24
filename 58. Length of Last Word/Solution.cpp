@@ -4,8 +4,8 @@ public:
         int length = 0;
         bool wasSpace = false;
 
-        for (int i=0; i<s.length(); ++i){
-            if (static_cast<int>(s[i]) != 32){ // not a space
+        for (int i=0; i < s.length(); ++i){
+            if (s[i] != 32){ // not a space
                 if (wasSpace){
                     length = 0;
                     wasSpace = false;
