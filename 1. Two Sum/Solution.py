@@ -1,6 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(len(nums) - 1):
-            for j in range(i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
+        # since you know the target, calculate the complement
+        # the complement is the key, and the index is the value
+        
+        lookup = dict()
+
+        for i in range(len(nums)):
+            if nums[i] in lookup.keys():
+                return [lookup[nums[i]], i]
+            lookup[target - nums[i]] = i
