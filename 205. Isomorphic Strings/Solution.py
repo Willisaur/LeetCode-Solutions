@@ -10,7 +10,7 @@ class Solution:
         
         for i in range(len(s)):
             if s[i] not in lookup.keys():
-                if t[i] in lookup.values():
+                if t[i] in lookup.values(): # this tripped me up; this checks if what i am mapping to has already been mapped to
                     return False
                 lookup[s[i]] = t[i]
             elif lookup[s[i]] != t[i]:
