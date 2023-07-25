@@ -28,4 +28,4 @@ class Solution:
         
         # i originally failed to account for the fact that len(pattern) doesn't necessarily equal the number of words in s, creating overflow errors or false positives
         # also,  I was unsure if pattern had to start with "a" and continue alphabetically
-        
+        # the second time, I did not realize that you could make duplicate keys for the same values
