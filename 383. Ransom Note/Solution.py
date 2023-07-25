@@ -15,3 +15,5 @@ class Solution:
                 magDict[ch] -= 1
         
         return True
+
+        # be careful which string you use your dict for!
