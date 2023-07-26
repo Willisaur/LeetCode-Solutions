@@ -1,10 +1,10 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
         # store the current number in a variable (n)
-        # add this number to a hashmap to track if a cycle is occurring (better than a list; duplicate keys means cycle)
-        # divide the number by 10 repetitively to get each digit
+        # add this number to a hashmap to track if a cycle is occurring (better time complexity than a list; duplicate keys means cycle)
+        # divide the number (n) by 10 repetitively to get each digit
         # square each digit and add to get to the new number
-        # if a cycle occurs, return False, otherwise return True
+        # if a cycle occurs (repetitive), return False, otherwise return True
         
         val = 0
         cycle = dict()
@@ -21,6 +21,6 @@ class Solution:
                 n //= 10
             
             n = val
-            val = 0
+            val = 0 # i forgot this and kept getting time exceeded haha
 
         return True
