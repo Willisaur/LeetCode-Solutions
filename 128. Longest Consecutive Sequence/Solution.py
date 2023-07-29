@@ -24,7 +24,7 @@ class Solution:
 
             elif n-1 in lookup: # n is above a range/will be a new high key
                 # get the most lower and upper keys of the range
-                lowerBound = min(n, lookup[n-1][0])
+                lowerBound = lookup[n-1][0]
                 upperBound = n
 
                 # delete the old key
@@ -38,7 +38,7 @@ class Solution:
             elif n+1 in lookup: # n is below a range/will be a new low key
                 # get the most lower and upper keys of the range
                 lowerBound = n
-                upperBound = max(n, lookup[n+1][1])
+                upperBound = lookup[n+1][1]
 
                 # delete the old key
                 del lookup[n+1]
