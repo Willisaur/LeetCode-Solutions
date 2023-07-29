@@ -3,7 +3,7 @@ class Solution:
         bad = {")":"(", "}":"{", "]":"["}
         stack = []
         for ch in s:
-            if len(stack) > 0:
+            if len(stack):
                 if ch not in bad:
                     stack.append(ch)
                 else:
