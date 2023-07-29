@@ -16,7 +16,7 @@ class Solution:
                 lowerBound = lookup[n-1][0]
                 upperBound = lookup[n+1][1]
 
-                # create new keys or reassign old ones to merge the ranges
+                # reassign old dict values to merge the ranges
                 lookup[lowerBound] = [lowerBound, upperBound]
                 lookup[upperBound] = [lowerBound, upperBound]
 
@@ -43,7 +43,7 @@ class Solution:
                 lowerBound = n
                 upperBound = lookup[n+1][1]
 
-                # update new upper bound key
+                # update old lower bound key
                 lookup[lowerBound] = [lowerBound, upperBound]
                 # create new upper bound key
                 lookup[upperBound] = [lowerBound, upperBound]
@@ -51,11 +51,13 @@ class Solution:
                 # check for size update
                 if upperBound - n + 1 > size:
                     size = upperBound - n + 1
-            else:
+
+            else: # there are no neighboring ranges
+                # add it to the dict
                 lookup[n] = [n, n]
 
                 # check for size update
-                if lookup[n][1] - lookup[n][0] + 1 > size:
-                    size = lookup[n][1] - lookup[n][0] + 1
+                if 1 > size:
+                    size = 1
 
         return size
