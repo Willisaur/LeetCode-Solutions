@@ -15,8 +15,6 @@ class Solution:
                 lowerBound = lookup[n-1][0]
                 upperBound = lookup[n+1][1]
 
-
-
                 # create new keys or reassign old ones to merge the ranges
                 lookup[lowerBound] = [lowerBound, upperBound]
                 lookup[upperBound] = [lowerBound, upperBound]
@@ -29,9 +27,6 @@ class Solution:
                 # get the most lower and upper keys of the range
                 lowerBound = lookup[n-1][0]
                 upperBound = n
-
-                # delete the old key
-                del lookup[n-1]
 
                 # update old lower bound key
                 lookup[lowerBound] = [lowerBound, upperBound]
@@ -46,9 +41,6 @@ class Solution:
                 # get the most lower and upper keys of the range
                 lowerBound = n
                 upperBound = lookup[n+1][1]
-
-                # delete the old key
-                del lookup[n+1]
 
                 # update new upper bound key
                 lookup[lowerBound] = [lowerBound, upperBound]
