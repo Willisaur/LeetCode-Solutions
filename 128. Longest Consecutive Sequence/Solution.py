@@ -23,6 +23,9 @@ class Solution:
                 lookup[lowerBound] = [lowerBound, upperBound]
                 lookup[upperBound] = [lowerBound, upperBound]
 
+                if upperBound - lowerBound + 1 > size:
+                    size = upperBound - lowerBound + 1
+
             elif n-1 in lookup: # n is above a range/will be a new high key
                 # get the most lower and upper keys of the range
                 lowerBound = lookup[n-1][0]
@@ -35,6 +38,9 @@ class Solution:
                 lookup[lowerBound] = [lowerBound, upperBound]
                 # create new upper bound key
                 lookup[upperBound] = [lowerBound, upperBound]
+
+                if n - lowerBound + 1 > size:
+                    size = n - lowerBound + 1
                 
             elif n+1 in lookup: # n is below a range/will be a new low key
                 # get the most lower and upper keys of the range
@@ -48,11 +54,13 @@ class Solution:
                 lookup[lowerBound] = [lowerBound, upperBound]
                 # create new upper bound key
                 lookup[upperBound] = [lowerBound, upperBound]
+
+                if upperBound - n + 1 > size:
+                    size = upperBound - n + 1
             else:
                 lookup[n] = [n, n]
-            
-        for v in lookup.values():
-            if v[1] - v[0] + 1 > size:
-                size = v[1] - v[0] + 1
+
+                if lookup[n][1] - lookup[n][0] + 1 > size:
+                    size = lookup[n][1] - lookup[n][0] + 1
 
         return size
