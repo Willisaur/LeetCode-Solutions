@@ -8,6 +8,7 @@ class Solution:
         nums = set(nums) # doesn't work if not a set since points overlap
         lookup = dict() # nums[i]: [lowerBound, upperBound]
         size = 0
+        lowerBound, upperBound = 0, 0
 
         for n in nums:
             if lookup and n-1 in lookup and n+1 in lookup: # n is between two existing ranges
