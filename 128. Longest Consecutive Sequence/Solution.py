@@ -4,6 +4,7 @@ class Solution:
         # the dictionary's values are the range of numbers that are consecutive 
         # after creating each new key, delete the old neighboring ones if needed
         # iterate through the dict values at the end to find the widest range and return its length
+
         nums = set(nums)
         lookup = dict()
         size = 0
