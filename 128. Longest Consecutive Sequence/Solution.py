@@ -5,8 +5,8 @@ class Solution:
         # after creating each new key, delete the old neighboring ones if needed
         # iterate through the dict values at the end to find the widest range and return its length
 
-        nums = set(nums)
-        lookup = dict()
+        nums = set(nums) # doesn't work if not a set since points overlap
+        lookup = dict() # nums[i]: [lowerBound, upperBound]
         size = 0
 
         for n in nums:
@@ -15,14 +15,13 @@ class Solution:
                 lowerBound = lookup[n-1][0]
                 upperBound = lookup[n+1][1]
 
-                # delete the old keys
-                del lookup[n-1]
-                del lookup[n+1]
+
 
                 # create new keys or reassign old ones to merge the ranges
                 lookup[lowerBound] = [lowerBound, upperBound]
                 lookup[upperBound] = [lowerBound, upperBound]
 
+                # check for size update
                 if upperBound - lowerBound + 1 > size:
                     size = upperBound - lowerBound + 1
 
@@ -39,6 +38,7 @@ class Solution:
                 # create new upper bound key
                 lookup[upperBound] = [lowerBound, upperBound]
 
+                # check for size update
                 if n - lowerBound + 1 > size:
                     size = n - lowerBound + 1
                 
@@ -55,11 +55,13 @@ class Solution:
                 # create new upper bound key
                 lookup[upperBound] = [lowerBound, upperBound]
 
+                # check for size update
                 if upperBound - n + 1 > size:
                     size = upperBound - n + 1
             else:
                 lookup[n] = [n, n]
 
+                # check for size update
                 if lookup[n][1] - lookup[n][0] + 1 > size:
                     size = lookup[n][1] - lookup[n][0] + 1
 
