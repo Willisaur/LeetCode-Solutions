@@ -11,8 +11,8 @@ class Solution:
         for n in nums:
             if lookup and n-1 in lookup and n+1 in lookup: # n is between two existing ranges
                 # get the most lower and upper keys of the ranges
-                lowerBound = min(min(n, lookup[n-1][0]), lookup[n+1][0])
-                upperBound = max(max(n, lookup[n+1][1]), lookup[n-1][1])
+                lowerBound = min(lookup[n-1][0], lookup[n+1][0])
+                upperBound = max(lookup[n+1][1], lookup[n-1][1])
 
                 # delete the old keys
                 del lookup[n-1]
