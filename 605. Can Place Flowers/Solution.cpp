@@ -12,10 +12,8 @@ public:
                 flowerbed.erase(start, start + (flowerbed.size() > 2 ? 3 : 2));
             }
         }
-        if (flowerbed.size() == 1){
-            if (!flowerbed[0]){
-                --n;
-            }
+        if (flowerbed.size() == 1 && !flowerbed[0]){
+            --n;
         }
         return n <= 0;
     }
