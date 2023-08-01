@@ -6,21 +6,25 @@ public:
         // if element 1 is 1, you cannot plant a flower in the current two spots
         // if element 2 is 1, you cannot plant a flower in the current 2 + 1 spots
         // if one element is left over and it's a zero, you can plant a flower
-        auto start  = flowerbed.begin();
-        while (flowerbed.size() > 1){
-            if (flowerbed[0] == 0 && flowerbed[1] == 0){
-                flowerbed.erase(start, start + 2);
+        int i = 0;
+        int first, second;
+        int size = flowerbed.size();
+        while (i+1 < size){
+            first = flowerbed[i];
+            second = flowerbed[i+1];
+
+            if (!first && !second){
                 --n;
-            } else if (flowerbed[0] == 1){
-                flowerbed.erase(start, start + 2);
-            } else {
-                flowerbed.erase(start, start + (flowerbed.size() > 2 ? 3 : 2));
+            } else if (!first){
+                if (i < size){
+                    ++i;
+                }
             }
-            start = flowerbed.begin();
+            i += 2;
         }
-        if (flowerbed.size() == 1 && !flowerbed[0]){
+        if (i < size && !flowerbed[size-1]){
             --n;
         }
-        return n <= 0;
+        return n<=0;
     }
 };
