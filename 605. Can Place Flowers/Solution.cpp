@@ -9,12 +9,7 @@ public:
             } else if (flowerbed[0] == 1){
                 flowerbed.erase(start, start + 2);
             } else {
-                if (flowerbed.size() > 2){
-                    flowerbed.erase(start, start + 3);
-                }
-                else{
-                    flowerbed.erase(start, start + 2);
-                }
+                flowerbed.erase(start, start + (flowerbed.size() > 2 ? 3 : 2));
             }
         }
         if (flowerbed.size() == 1){
