@@ -18,7 +18,7 @@ class Solution:
             if s[i] in vowels:
                 cVowels += 1
             
-            if cVowels > maxVowels:
+            if cVowels == maxVowels+1:
                 maxVowels = cVowels
             if maxVowels == k:
                 return maxVowels
