@@ -2,22 +2,18 @@ class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         # m = # of rows
         # n = # of columns
-        matrix = [[0 for x in range(n)] for x in range(m)]
+        grid = [[0 for x in range(n)] for x in range(m)]
 
         # return the number of paths from the right square to the end and the below square to the end
         def checkPaths(i, j):
-            if i+1 == m and j+1 == n: 
-                return 1  # set the finish to 1 path
+            if i == m or j == n: # out of bounds
+                return 0
+            if i == m-1 and j == n-1: # at bottom right
+                return 1
+            if grid[i][j] == 0: # not calculated yet
+                grid[i][j] = checkPaths(i+1, j) + checkPaths(i, j+1)
+            return grid[i][j]
+        
+        print(grid)
 
-            accum = 0
-            if i < m-1: # don't access a row out of bounds
-                accum += matrix[i+1][j]
-            if j < n-1: # don't access a column out of bounds
-                accum += matrix[i][j+1]
-            return accum
-
-        for i in range(m-1, -1, -1):
-            for j in range(n-1, -1, -1):
-                matrix[i][j] = checkPaths(i, j)
-
-        return matrix[0][0]
+        return checkPaths(0, 0)
