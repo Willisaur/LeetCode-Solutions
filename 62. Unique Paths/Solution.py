@@ -13,7 +13,5 @@ class Solution:
             if grid[i][j] == 0: # not calculated yet
                 grid[i][j] = checkPaths(i+1, j) + checkPaths(i, j+1)
             return grid[i][j]
-        
-        print(grid)
 
         return checkPaths(0, 0)
