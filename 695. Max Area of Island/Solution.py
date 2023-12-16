@@ -1,7 +1,7 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         visited = [[0 for i in range(len(grid[0]))] for j in range(len(grid))]
-        area = 0
+        max_area = 0
 
         def searchLand(i, j):
             visited[i][j] = 1
@@ -23,8 +23,8 @@ class Solution:
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if visited[i][j] == 0 and grid[i][j]: # first time reaching this island
-                    area = max(area, 1+searchLand(i, j))
+                    max_area = max(max_area, 1+searchLand(i, j))
         
-        return area
+        return max_area
                     
 
