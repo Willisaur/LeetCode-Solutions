@@ -1,6 +1,6 @@
 class Solution {
     func reverseString(_ s: inout [Character]) {
-        var i: Int = 0
+        var i = 0
         var temp: Character
 
         while i < s.count/2 {
