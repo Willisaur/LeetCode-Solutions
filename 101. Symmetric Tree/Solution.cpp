@@ -11,13 +11,14 @@
  */
 class Solution {
 public:
-    string visit(TreeNode* current, bool side){
-        if (!current){
-            return ".";
-        }
-        return visit(side ? current->left: current->right, side) + visit(side ? current->right : current->left, side) + to_string(current->val);
+    bool visit(TreeNode* leftHalf, TreeNode* rightHalf){
+        if (!leftHalf && !rightHalf) return true;
+        if (!leftHalf || !rightHalf) return false;
+        if (leftHalf->val != rightHalf->val) return false;
+
+        return visit(leftHalf->left, rightHalf->right) && visit(leftHalf->right, rightHalf->left);
     }
     bool isSymmetric(TreeNode* root) {
-        return visit(root->left, 0) == visit(root->right, 1);
+        return visit(root->left, root->right);
     }
 };
