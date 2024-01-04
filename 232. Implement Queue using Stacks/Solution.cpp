@@ -1,6 +1,5 @@
 class MyQueue {
 public:
-    #include <stack>
     stack<int> s; 
     stack<int> t; // used for pop storage
     MyQueue() {
