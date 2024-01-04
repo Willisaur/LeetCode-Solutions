@@ -6,27 +6,20 @@ public:
     
     void push(int x) {
         s.push(x);
-    }
-    
-    int pop() {
-        for (int i = s.size()-1; i>0; --i){ // rotate the queue until element to-be-popped is at the front
+        for (int i=1; i<s.size(); ++i){ // rotate the queue so that it is ordered as the stack
             s.push(s.front());
             s.pop();
         }
+    }
+    
+    int pop() {
         int temp = s.front();
         s.pop();
         return temp;
     }
     
     int top() {
-        for (int i = s.size()-1; i>0; --i){ // rotate the queue until element to-be-peeked is at the front
-            s.push(s.front());
-            s.pop();
-        }
-        int temp = s.front();
-        s.pop();
-        s.push(temp); // put it back in the queue
-        return temp;
+        return s.front();
     }
     
     bool empty() {
