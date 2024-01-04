@@ -1,10 +1,19 @@
 class MyStack {
 public:
     queue<int> s; // [1, 2, 3, 4, 5]
+    int index;
 
-    MyStack() {}
+    MyStack() {
+        index = 0;
+    }
     
     void push(int x) {
+        while (index < s.size()){
+            ++index;
+            s.push(s.front());
+            s.pop();
+        }
+        ++index;
         s.push(x);
     }
     
