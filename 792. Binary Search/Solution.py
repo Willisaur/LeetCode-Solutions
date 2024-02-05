@@ -6,11 +6,10 @@ class Solution:
 
         while i <= j:
             if target == nums[k]:
-                return k
+                return k # found, return index
             elif target < nums[k]:
-                j = k - 1
+                j = k-1 # move upper pointer down
             else:
-                i = k + 1
-            k = (j - i) // 2 + i
-        
-        return -1
+                i = k+1 # move lower pointer up
+            k = (i+j)//2
+        return -1 # not found, return -1
