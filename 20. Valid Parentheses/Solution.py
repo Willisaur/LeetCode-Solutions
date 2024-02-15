@@ -1,14 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        bad = {")":"(", "}":"{", "]":"["}
+        compliments = {'}':'{', ')':'(', ']':'['}
+        open = {'{', '(', '['}
         stack = []
         for ch in s:
-            if stack:
-                if ch not in bad:
-                    stack.append(ch)
-                else:
-                    if stack.pop() != bad[ch]:
-                        return False
-            else:
+            if ch in open:
                 stack.append(ch)
-        return len(stack)==0
+            else:
+                if not stack:
+                    return False
+                if stack[-1] == compliments[ch]:
+                    stack.pop(-1)
+                else:
+                    return False
+
+        return not stack
