@@ -7,9 +7,7 @@ class Solution:
             if ch in open:
                 stack.append(ch)
             else:
-                if not stack:
-                    return False
-                if stack[-1] == compliments[ch]:
+                if stack and stack[-1] == compliments[ch]:
                     stack.pop(-1)
                 else:
                     return False
