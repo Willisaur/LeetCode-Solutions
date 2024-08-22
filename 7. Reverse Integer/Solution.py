@@ -15,6 +15,7 @@ class Solution:
             digit = x % 10
             x //= 10
 
+            # must not increase before decreasing
             if maxTruncatedIntReversed[10-length] < digit:
                 hasIncreased = True
                 if not hasDecreased:
@@ -22,7 +23,7 @@ class Solution:
             elif maxTruncatedIntReversed[10-length] > digit:
                 hasDecreased = True
 
-            print(hasIncreased, hasDecreased, digitFlag, digit, maxTruncatedIntReversed[10-length], length)
+            #print(hasIncreased, hasDecreased, digitFlag, digit, maxTruncatedIntReversed[10-length], length)
             if length == 10 and digitFlag:
                 return 0
             
