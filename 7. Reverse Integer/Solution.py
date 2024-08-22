@@ -1,5 +1,6 @@
 class Solution:
     def reverse(self, x: int) -> int:
+        # solution works if the system cannot hold more than 32-bit integers
         reverseX = 0
         length = 0
         isNegative = x < 0
