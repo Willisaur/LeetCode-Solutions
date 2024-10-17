@@ -10,8 +10,8 @@ class Solution:
                 return
             
             # make a choice
-            for j in range(i, len(nums)):
-                build(current + [nums[j]], j+1)
+            for j in range(i, len(nums)): # iterate through all options
+                build(current + [nums[j]], j+1) # future options cannot include previous number in numbers
         
         build()
         return answers
