@@ -6,8 +6,8 @@ class Solution:
 
         # find possible digits
         # try another digit in current cell and move to next cell
+        boxIndex = i//3*3 + j//3
         for k in range(9):
-            boxIndex = i//3*3 + j//3
             if rm[i][k] == 0 and cm[j][k] == 0 and bm[boxIndex][k] == 0:
                 # attempt to solve using k
                 # print(f'trying {k+1} in {i} {j}')
