@@ -8,12 +8,12 @@ class Solution:
         # try another digit in current cell and move to next cell
         boxIndex = i//3*3 + j//3
         for k in range(9):
-            if rm[i][k] == 0 and cm[j][k] == 0 and bm[boxIndex][k] == 0:
+            if k not in rm[i] and k not in cm[j] and k not in bm[boxIndex]:
                 # attempt to solve using k
                 # print(f'trying {k+1} in {i} {j}')
-                rm[i][k] = 1 
-                cm[j][k] = 1
-                bm[boxIndex][k] = 1
+                rm[i].add(k)
+                cm[j].add(k)
+                bm[boxIndex].add(k)
         
                 board[i][j] = str(k+1)
                 if nextCell == [-1, -1] or self.backtrack(board, cq, rm, cm, bm, nextCell[0], nextCell[1]):
@@ -21,9 +21,9 @@ class Solution:
                 
                 # undo work in current cell
                 board[i][j] = '.'
-                rm[i][k] = 0
-                cm[j][k] = 0
-                bm[boxIndex][k] = 0
+                rm[i].remove(k)
+                cm[j].remove(k)
+                bm[boxIndex].remove(k)
         cq.appendleft(nextCell)
         
         # undo work in previous cell
@@ -31,18 +31,18 @@ class Solution:
     
     def solveSudoku(self, board: List[List[str]]) -> None:
         cellQueue = deque([])
-        rowMemo = [[0 for _ in range(9)] for _ in range(9)]
-        colMemo = [[0 for _ in range(9)] for _ in range(9)]
-        boxMemo = [[0 for _ in range(9)] for _ in range(9)]
+        rowMemo = [set() for _ in range(9)]
+        colMemo = [set() for _ in range(9)]
+        boxMemo = [set() for _ in range(9)]
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] == '.':
                     cellQueue.append([i, j])
                 else:
                     cell = int(board[i][j])-1
-                    rowMemo[i][cell] = 1
-                    colMemo[j][cell] = 1
-                    boxMemo[i//3*3 + j//3][cell] = 1
+                    rowMemo[i].add(cell)
+                    colMemo[j].add(cell)
+                    boxMemo[i//3*3 + j//3].add(cell)
         cellQueue.append([-1, -1])
         
         start = cellQueue.popleft()
