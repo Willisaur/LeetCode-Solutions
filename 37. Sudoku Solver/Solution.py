@@ -20,13 +20,13 @@ class Solution:
                     return True
                 
                 # undo work in current cell
-                board[i][j] = '.'
                 rm[i].remove(k)
                 cm[j].remove(k)
                 bm[boxIndex].remove(k)
-        cq.appendleft(nextCell)
         
         # undo work in previous cell
+        # board[i][j] = '.' # not needed since cell is added to queue anyways
+        cq.appendleft(nextCell)
         return False
     
     def solveSudoku(self, board: List[List[str]]) -> None:
