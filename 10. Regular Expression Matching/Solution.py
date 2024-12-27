@@ -1,9 +1,7 @@
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
-        if s == '' and p == '':
-            return True
-        elif p == '':
-            return False
+        if p == '':
+            return s == ''
 
         if len(p) > 1 and p[1] == '*':
             # found 0 times
