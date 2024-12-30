@@ -13,6 +13,6 @@ class Solution:
                 accum += dp[i]
 
         # print(dp)
-        return accum % (10**9 + 7)
+        return accum % 1000000007
 
 
