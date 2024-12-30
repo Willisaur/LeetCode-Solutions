@@ -5,9 +5,9 @@ class Solution:
 
         accum = 0
         for i in range(min(zero, one), high+1):
-            if i - zero >= 0:
+            if i >= zero:
                 dp[i] += dp[i - zero]
-            if i - one >= 0:
+            if i >= one:
                 dp[i] += dp[i - one]
             if i >= low:
                 accum += dp[i]
