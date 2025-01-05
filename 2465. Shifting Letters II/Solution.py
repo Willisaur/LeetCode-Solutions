@@ -4,16 +4,16 @@ class Solution:
         out = []
         
         def shiftLetter(ch, amnt):
-            print(ch, amnt)
+            # print(ch, amnt)
             if amnt > 0:
                 while ord(ch) + amnt > 97 + 25:
                     amnt -= 26
-                print(chr(ord(ch) + amnt))
+                # print(chr(ord(ch) + amnt))
                 return chr(ord(ch) + amnt)
             if amnt < 0:
                 while ord(ch) + amnt < 97:
                     amnt += 26
-                print(chr(ord(ch) + amnt))
+                # print(chr(ord(ch) + amnt))
                 return chr(ord(ch) + amnt)
             return ch
         
@@ -23,7 +23,7 @@ class Solution:
             if shift[1]+1 < len(s):
                 arr[shift[1]+1] -= 1 if shift[-1] == 1 else -1
         
-        print(arr)
+        # print(arr)
         for i in range(len(s)):
             if i > 0:
                 arr[i] += arr[i-1]
