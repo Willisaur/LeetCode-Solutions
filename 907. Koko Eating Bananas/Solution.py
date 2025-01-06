@@ -11,7 +11,7 @@ class Solution:
         while lower < upper:
             middle = (lower + upper)//2
             # print(lower, upper, middle)
-            if eat(piles.copy(), middle): # may be eating too many (k is too large)
+            if eat(piles, middle): # may be eating too many (k is too large)
                 upper = middle
             else: # insufficient time for given problem (k is too small)
                 lower = middle + 1
