@@ -2,7 +2,7 @@ class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
         counts = Counter(words)
         length = 0
-        flag = True
+        flag = False
         # print(counts)
 
         for k, v in counts.items():
@@ -11,15 +11,11 @@ class Solution:
             
             if k != k2: # ex: ab matches with ba
                 v2 = counts.get(k2, 0)
-                length += 2 * min(v, v2) # ex: ab counted this time, ba counted later
+                length += min(v, v2) # ex: ab counted this time, ba counted later
             else:
-                if v % 2 == 0: # symmetric; add as-is
-                    length += 2 * v
-                elif v > 1: # odd number of symmetric occurences -- just remove the odd one
-                    length += 2 * (v-1)
+                length += v if v % 2 == 0 else v-1 if v > 1 else 0
                     
-                if flag and v % 2: # single item in center of palindrome
-                    flag = False
-                    length += 2
+                if v % 2: # single item in center of palindrome
+                    flag = True
         
-        return length
+        return (length + flag) * 2
