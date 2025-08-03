@@ -6,6 +6,6 @@ class Solution:
         lookup = dict()
 
         for i in range(len(nums)):
-            if nums[i] in lookup.keys():
+            if nums[i] in lookup:
                 return [lookup[nums[i]], i]
             lookup[target - nums[i]] = i
